@@ -1,0 +1,80 @@
+name: Bug report
+description: Something in the script or a printer setup failed.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please **do not** attach `.dmg`, `.pkg`, or
+        extracted HP/Apple binaries — link to the vendor source instead.
+
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have not attached or pasted any proprietary Apple/HP binaries.
+          required: true
+        - label: I searched existing issues before opening this one.
+          required: true
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Script mode
+      options:
+        - legacy-cups (default)
+        - native-ipp
+        - --patch-pkg-only
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "e.g. 15.6.1 / 26.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: arch
+    attributes:
+      label: Architecture
+      options:
+        - Apple Silicon (arm64)
+        - Intel (x86_64)
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Include the exact command you ran.
+      placeholder: |
+        ./build_hp_m1005_macos_driver.sh --mode legacy-cups
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Paste terminal output. Redact usernames/serials if needed.
+      render: shell
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Printer detected in `lpinfo -v`? Rosetta installed? Anything else?

@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Apple — HP 5.1.1 Printer Software Update
+    url: https://support.apple.com/en-us/106385
+    about: Official Apple download page used by legacy-cups mode.
+  - name: SKD-Innovations — native driver source
+    url: https://github.com/SKD-Innovations/hp-m1005-mfp-driver-mac-os/issues
+    about: Upstream issues for the native PAPPL/foo2xqx build.
+  - name: Security or licensing concern
+    url: https://github.com/dumbL4d/hp-laserjet-m1005-macos-driver/security/policy
+    about: Please report privately rather than opening a public issue.

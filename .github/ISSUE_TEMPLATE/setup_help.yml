@@ -1,0 +1,87 @@
+name: Setup / printing help
+description: The script ran, but the printer still does not print.
+title: "[Help]: "
+labels: ["question", "printing", "needs-triage"]
+body:
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have not attached any proprietary Apple/HP binaries.
+          required: true
+        - label: I read the README and troubleshooting notes.
+          required: true
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Which mode did you run?
+      options:
+        - legacy-cups (default)
+        - native-ipp
+        - --patch-pkg-only
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "e.g. 14.7 / 15.6.1 / 26.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: arch
+    attributes:
+      label: Architecture
+      options:
+        - Apple Silicon (arm64)
+        - Intel (x86_64)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks already performed
+      options:
+        - label: Printer shows up in `lpinfo -v` (or in System Settings).
+        - label: Rosetta 2 is installed (Apple Silicon + legacy-cups).
+        - label: Queue exists in `lpstat -p -d`.
+        - label: I tried removing and re-adding the queue.
+
+  - type: textarea
+    id: symptoms
+    attributes:
+      label: What happens?
+      description: Job stuck in queue, no output, garbled pages, app won't start, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      description: Output of the commands below (redact serial numbers if you like).
+      value: |
+        # macOS / hardware
+        sw_vers; uname -m
+
+        # Printer visibility
+        lpinfo -v | grep -i -E 'm1005|03f0'
+
+        # Queue state
+        lpstat -p -d; lpstat -o
+
+        # Recent CUPS errors
+        tail -n 50 /var/log/cups/error_log
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else?
