@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------------------
+# Proprietary Apple / HP installer artifacts — never commit or redistribute
+# ---------------------------------------------------------------------------
+*.dmg
+*.pkg
+*.mpkg
+*.iso
+
+HewlettPackardPrinterDrivers*
+hp-printer-drivers*
+HP_Drivers*
+HPPrinterDrivers*
+
+# Extracted vendor payloads (e.g. from /Library/Printers/hp)
+Library/Printers/
+**/Library/Printers/hp/
+hp.bak-*/
+*.bak-*/
+
+# ---------------------------------------------------------------------------
+# Build output (native-ipp mode)
+# ---------------------------------------------------------------------------
+build/
+external/
+*.o
+*.a
+*.dylib
+*.so
+*.app/
+*.bundle/
+*.xcodeproj/
+DerivedData/
+hp-m1005-macos-driver-build/
+*.log
+
+# ---------------------------------------------------------------------------
+# Local / editor / OS noise
+# ---------------------------------------------------------------------------
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.env
+.env.*
+scratch/
+tmp/
